@@ -9,3 +9,5 @@ class AST(models.Model):
 
     def __str__(self):
         return f"Index:{self.db_index}\n"
+
+
