@@ -13,8 +13,8 @@
                                 <div class="form-floating mb-4">
                                     <input type="email" class="form-control"
                                            placeholder="Email" style="border-radius: 10px;"
-                                           id="{{ form.email.id_for_label }}" maxlength="32"
-                                           name="{{ form.email.html_name }}"
+                                           maxlength="32"
+                                           name="email"
                                            value="{{ form.email.value|default_if_none:"" }}"
                                            required>
                                     <label for="floatingInput">Email</label>
@@ -22,8 +22,9 @@
                                 <div class="form-floating mb-4">
                                     <input type="password" class="form-control"
                                            placeholder="Пароль" style="border-radius: 10px;"
-                                           id="{{ form.password.id_for_label }}"
-                                           maxlength="32" name="{{ form.password.html_name }}" required>
+                                           maxlength="32"
+                                           name="password"
+                                           required>
                                     <label for="floatingPassword">Пароль</label>
                                 </div>
                                 <div class="d-grid gap-4">

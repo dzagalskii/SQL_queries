@@ -5,8 +5,13 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+    DB_CHOICES = (('MS', 'Microsoft SQL'), ('OS', 'Oracle SQL'), ('PG', 'PostgreSQL'),)
+
     username = None
     email = models.EmailField(_('email address'), unique=True)
+    database = models.CharField(max_length=2,
+                                choices=DB_CHOICES,
+                                default=None)
     data_schemas = models.CharField(max_length=16)
 
     USERNAME_FIELD = 'email'
