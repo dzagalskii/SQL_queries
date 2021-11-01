@@ -2,13 +2,15 @@ import psycopg2
 from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render
+from Core.SqlRequestCheck import *
 
 
 # Create your views here.
 
+
 def index(request):
     sql_request = AST.objects.get(db_index='CQ-2')
-    #print(sql_request.db_answer)
+    # print(sql_request.db_answer)
     con = psycopg2.connect(
         database="BoBSDB",
         user="postgres",
@@ -21,18 +23,18 @@ def index(request):
         cur.execute(sql_request.db_answer)
         rows = cur.fetchall()
         print(rows)
-        cur.execute('SELECT ast1.Name  FROM ASt as ast1 inner join ASt as ast2 on ast1.UPSys = ast2.Code  WHERE ast1.Cost_pm <= ast2.Cost_pm;')
+        cur.execute(
+            'SELECT ast1.Code  FROM ASt as ast1 inner join ASt as ast2 on ast1.UPSys = ast2.Code  WHERE ast1.Cost_pm <= ast2.Cost_pm;')
         new_rows = cur.fetchall()
         print(new_rows)
         if rows == new_rows:
             print('ok')
         else:
-            print('not ok')
+            find_error(rows, new_rows)
 
 
     except Exception:
         print(Exception)
-
 
     con.close()
 
