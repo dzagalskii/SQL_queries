@@ -6,7 +6,7 @@ from account import views
 from BoBSDB import settings
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
+    path('login/', views.signin, name='login'),
     path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     path('register/', views.signup, name="register"),
     path('activate/<uidb64>/<token>/', views.activate, name="activate"),
