@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from .models import *
-from Core.DBConnect import *
+from .Core.DBConnect import *
 
 
 def index(request):
