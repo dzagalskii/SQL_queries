@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="vh-100">
+        <div class="container h-100" style="margin-top: -56px">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div style="border-radius: 15px; background-color: #ececec">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Вход</h3>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="floatingInput"
+                                       placeholder="Логин" required style="border-radius: 10px;">
+                                <label for="floatingInput">Логин</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                       placeholder="Пароль" required style="border-radius: 10px;">
+                                <label for="floatingPassword">Пароль</label>
+                            </div>
+                            <div class="d-grid gap-4">
+                                <a class="btn btn-lg btn-primary" type="button" style="border-radius: 10px;">Войти</a>
+                                <a class="btn btn-lg btn-secondary" type="button" href="/frontend/register"
+                                   style="border-radius: 10px;">Регистрация</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

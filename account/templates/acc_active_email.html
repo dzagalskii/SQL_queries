@@ -1,0 +1,6 @@
+{% autoescape off %}
+Привет, {{ user.username }}! Спасибо за регистрацию на MineHelper.
+Чтобы активировать аккаунт, необходимо перейти по ссылке:
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
+

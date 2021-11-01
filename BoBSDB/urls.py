@@ -20,4 +20,5 @@ urlpatterns = [
     path('test/', include('dbserver.urls')),
     path('admin/', admin.site.urls),
     path('queries/', include('queries.urls')),
+    path('account/', include('account.urls')),
 ]
