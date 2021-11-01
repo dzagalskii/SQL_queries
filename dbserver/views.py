@@ -3,10 +3,7 @@ from .models import *
 from Core.DBConnect import *
 
 
-
-
 def index(request):
-
     connect_to_postgres()
     # print(sql_request.db_answer)
 
