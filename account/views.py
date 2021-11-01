@@ -20,7 +20,7 @@ def signup(request):
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Активация аккаунта MineHelper'
-            message = render_to_string('acc_active_email.html', {
+            message = render_to_string('registration/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -31,7 +31,7 @@ def signup(request):
                         mail_subject, message, to=[to_email]
             )
             email.send()
-            return render(request, 'register_done.html')
+            return render(request, 'registration/register_done.html')
     else:
         form = SignupForm()
     return render(request, 'register.html', {'form': form})
@@ -47,7 +47,7 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return render(request, 'register_complete.html')
+        return render(request, 'registration/register_complete.html')
     else:
         # ПРИСРАТЬ СЮДА СТРАНИЦУ
         return HttpResponse('Activation link is invalid!')

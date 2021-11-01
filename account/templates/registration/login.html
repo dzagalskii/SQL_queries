@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="vh-100">
+        <div class="container h-100" style="margin-top: -56px">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div style="border-radius: 15px; background-color: #ececec">
+                        <div class="card-body p-5 text-center">
+                            <form class="needs-validation" action="" method="POST">
+                                {% csrf_token %}
+                                <h3 class="mb-5">Вход</h3>
+                                <div class="form-floating mb-4">
+                                    <input type="email" class="form-control"
+                                           placeholder="Email" style="border-radius: 10px;"
+                                           id="{{ form.email.id_for_label }}" maxlength="32"
+                                           name="{{ form.email.html_name }}"
+                                           value="{{ form.email.value|default_if_none:"" }}"
+                                           required>
+                                    <label for="floatingInput">Логин</label>
+                                </div>
+                                <div class="form-floating mb-4">
+                                    <input type="password" class="form-control"
+                                           placeholder="Пароль" style="border-radius: 10px;"
+                                           id="{{ form.password.id_for_label }}"
+                                           maxlength="32" name="{{ form.password.html_name }}" required>
+                                    <label for="floatingPassword">Пароль</label>
+                                </div>
+                                <div class="d-grid gap-4">
+                                    <button class="btn btn-lg btn-primary" type="submit"
+                                            style="border-radius: 10px;">Войти
+                                    </button>
+                                    <a class="btn btn-lg btn-secondary" type="button" href="/account/register"
+                                       style="border-radius: 10px;">Регистрация</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

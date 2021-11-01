@@ -3,7 +3,7 @@ from django.contrib.auth.views import LogoutView, LoginView, \
     PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 from account import views
-from MineHelperDjango import settings
+from BoBSDB import settings
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
