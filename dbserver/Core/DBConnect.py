@@ -1,8 +1,10 @@
 import psycopg2
 from SqlRequestCheck import *
+from dbserver.models import AST
+
 
 def connect_to_postgres():
-
+    sql_request = AST.objects.get(db_index='CQ-2')
     con = psycopg2.connect(
         database="BoBSDB",
         user="postgres",
