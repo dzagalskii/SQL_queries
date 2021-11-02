@@ -1,61 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="accordion" id="accordionPanelsStayOpenExample" style="margin-top: 50px">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseOne">
-                    Схема данных AST
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
-                 aria-labelledby="panelsStayOpen-headingOne">
-                <div class="accordion-body">
-                    {% for ast_sec_query in all_ast_sec_queries %}
-                        <div class="card mb-3" style="background-color: #f6f6f6">
-                            <div class="card-body">
-                                <h5 class="card-title">Запрос {{ ast_sec_query.db_index }}</h5>
-                                <p class="card-text">
-                                    {{ ast_sec_query.db_request }}
-                                </p>
-                                <a href="#" class="btn btn-primary">Перейти</a>
+    <section class="vh-100">
+        <div class="container h-100" style="margin-top: -56px">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-10 col-lg-10 col-xl-9">
+                    <div style="border-radius: 15px; background-color: #ececec">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Контрольные работы</h3>
+                            <div class="card text-start">
+                                <div class="card-header">
+                                    Контрольная работа №1
+                                </div>
+                                <div class="card-body ">
+                                    <h5 class="card-title">Обычные запросы</h5>
+                                    <p class="card-text">Время написания 10 лет. Даже, если не все правильно - ответ засчитывается.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a href="#" class="btn btn-primary">Перейти к решению</a>
+                                </div>
+                            </div>
+                            <div class="card text-start" style="margin-top: 25px">
+                                <div class="card-header">
+                                    Контрольная работа №2
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Запросы посложнее</h5>
+                                    <p class="card-text">Время написания 1 час. Ошибки не допускаются.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a href="#" class="btn btn-primary">Перейти к решению</a>
+                                </div>
+                            </div>
+                            <div class="card text-start" style="margin-top: 25px">
+                                <div class="card-header">
+                                    Контрольная работа №3
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Очкорвательные запросы хуй напишешь</h5>
+                                    <p class="card-text">Время написания 10 секунд. За дыхание штраф 10 секунд.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a href="#" class="btn btn-primary">Перейти к решению</a>
+                                </div>
                             </div>
                         </div>
-                    {% endfor %}
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseTwo">
-                    Схема данных XXX
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                 aria-labelledby="panelsStayOpen-headingTwo">
-                <div class="accordion-body">
-                    Информация о схеме данных XXX...
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                        aria-controls="panelsStayOpen-collapseThree">
-                    Схема данных XXX
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                 aria-labelledby="panelsStayOpen-headingThree">
-                <div class="accordion-body">
-                    Информация о схеме данных XXX...
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 {% endblock %}
