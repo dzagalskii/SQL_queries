@@ -33,7 +33,6 @@ def signin(request):
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
-        print(form.errors)
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
@@ -54,7 +53,11 @@ def signup(request):
             return render(request, 'registration/register_done.html')
     else:
         form = SignupForm()
-    return render(request, 'registration/register.html', {'form': form})
+    my_errors = []
+    for error_field in form.errors:
+        for error in form.errors[error_field]:
+            my_errors.append(error)
+    return render(request, 'registration/register.html', {'form': form, 'errors': my_errors})
 
 
 def activate(request, uidb64, token):
