@@ -19,13 +19,16 @@
                                            required>
                                     <label for="floatingInput">Email</label>
                                 </div>
-                                <div class="form-floating mb-4">
+                                <div class="form-floating mb-3">
                                     <input type="password" class="form-control"
                                            placeholder="Пароль" style="border-radius: 10px;"
                                            maxlength="32"
                                            name="password"
                                            required>
                                     <label for="floatingPassword">Пароль</label>
+                                    <div class="text-end" style="margin-right: 5px">
+                                        <small class="text-muted"><a href="{% url 'password_reset' %}">Забыли пароль?</a></small>
+                                    </div>
                                 </div>
                                 <div class="d-grid gap-4">
                                     <button class="btn btn-lg btn-primary" type="submit"
