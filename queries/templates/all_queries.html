@@ -14,10 +14,30 @@
                                 </div>
                                 <div class="card-body ">
                                     <h5 class="card-title">Обычные запросы</h5>
-                                    <p class="card-text">Время написания 10 лет. Даже, если не все правильно - ответ засчитывается.</p>
+                                    <p class="card-text">Время написания 10 лет. Даже, если не все правильно - ответ
+                                        засчитывается.</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                       data-bs-target="#controlWork1Modal">Посмотреть схему данных</a>
+                                    <div class="modal fade" id="controlWork1Modal" tabindex="-1"
+                                         aria-labelledby="controlWork1ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="controlWork1ModalLabel">Ваша схема
+                                                        данных для КР №1: </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {% load static %}
+                                                    <img src="{% static 'img/nyusha.jpg' %}" class="img-fluid"
+                                                         alt="..." style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <a href="#" class="btn btn-primary">Перейти к решению</a>
                                 </div>
                             </div>
@@ -30,7 +50,26 @@
                                     <p class="card-text">Время написания 1 час. Ошибки не допускаются.</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                       data-bs-target="#controlWork2Modal">Посмотреть схему данных</a>
+                                    <div class="modal fade" id="controlWork2Modal" tabindex="-1"
+                                         aria-labelledby="controlWork2ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="controlWork2ModalLabel">Ваша схема
+                                                        данных для КР №2: </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {% load static %}
+                                                    <img src="{% static 'img/nyusha.jpg' %}" class="img-fluid"
+                                                         alt="..." style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <a href="#" class="btn btn-primary">Перейти к решению</a>
                                 </div>
                             </div>
@@ -43,7 +82,26 @@
                                     <p class="card-text">Время написания 10 секунд. За дыхание штраф 10 секунд.</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-secondary">Посмотреть схему данных</a>
+                                    <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                       data-bs-target="#controlWork3Modal">Посмотреть схему данных</a>
+                                    <div class="modal fade" id="controlWork3Modal" tabindex="-1"
+                                         aria-labelledby="controlWork3ModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="controlWork3ModalLabel">Ваша схема
+                                                        данных для КР №3: </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {% load static %}
+                                                    <img src="{% static 'img/nyusha.jpg' %}" class="img-fluid"
+                                                         alt="..." style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <a href="#" class="btn btn-primary">Перейти к решению</a>
                                 </div>
                             </div>
