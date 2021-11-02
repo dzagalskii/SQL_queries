@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate, login
 
 
 def signin(request):
+    my_errors = []
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -22,12 +23,12 @@ def signin(request):
                     login(request, user)
                     return HttpResponseRedirect('/queries')
                 else:
-                    return HttpResponse('Disabled account')
+                    my_errors.append('Данный аккаунт не активирован.')
             else:
-                return HttpResponse('Invalid login')
+                my_errors.append('Неправильный логин или пароль.')
     else:
         form = LoginForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'registration/login.html', {'form': form, 'errors': my_errors})
 
 
 def signup(request):
