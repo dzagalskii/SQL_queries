@@ -1,3 +1,4 @@
+from random import randint
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -7,9 +8,10 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
-from django.core.mail import EmailMessage, send_mail
+from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
 from django.conf import settings
+from dbserver.Core.Constants import DATA_SCHEMAS
 
 
 def signin(request):
@@ -38,6 +40,9 @@ def signup(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.data_schemas = '{} {} {}'.format(DATA_SCHEMAS[randint(0, 2)],
+                                                  DATA_SCHEMAS[randint(0, 2)],
+                                                  DATA_SCHEMAS[randint(0, 2)],)
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Активация аккаунта SQL Queries'
