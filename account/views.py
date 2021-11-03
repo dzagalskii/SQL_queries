@@ -7,8 +7,9 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.contrib.auth import authenticate, login
+from django.conf import settings
 
 
 def signin(request):
@@ -40,17 +41,25 @@ def signup(request):
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Активация аккаунта MineHelper'
-            message = render_to_string('registration/acc_active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                        mail_subject, message, to=[to_email]
+            domain = current_site.domain
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = account_activation_token.make_token(user)
+            activate_link = 'http://{domain}/activate/{uid}/{token}'.format(
+                domain=domain,
+                uid=uid,
+                token=token,
             )
-            email.send()
+            print(activate_link)
+            html_message = render_to_string('registration/acc_active_email.html', {
+                'activate_link': activate_link,
+                'user': user,
+            })
+            destination_email = form.cleaned_data.get('email')
+            sending_control = bool(send_mail(subject=mail_subject,
+                                             message=None,
+                                             from_email=settings.DEFAULT_FROM_EMAIL,
+                                             recipient_list=[destination_email],
+                                             html_message=html_message))
             return render(request, 'registration/register_done.html')
     else:
         form = SignupForm()
