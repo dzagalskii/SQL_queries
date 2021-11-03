@@ -182,8 +182,12 @@
                                         <tbody>
                                         <tr>
                                             <td style="width:64px;">
-                                                <img height="auto" src="https://lovepet.com.ua/image/facebook.png"
+                                                {% comment %}<img height="auto" src="https://lovepet.com.ua/image/facebook.png"
                                                      style="border:0;display:block;outline:none;text-decoration:none;width:100%;"
+                                                     width="64"/>{% endcomment %}
+                                                <img height="auto"
+                                                     src="https://image.flaticon.com/icons/png/512/65/65998.png"
+                                                     style="border:0;display:block;outline:none;text-decoration:none;width:100%;background: none;"
                                                      width="64"/>
                                             </td>
                                         </tr>
@@ -202,8 +206,9 @@
                             </tr>
                             <tr>
                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;color:#555;">
-                                        Ваш аккаунт создан - осталось только его активировать. Для этого нажмите на
+                                    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:center;color:#555;">
+                                        Ваш аккаунт "{{ user.email }}" создан - осталось только его активировать. Для
+                                        этого нажмите на
                                         кнопку ниже:
                                     </div>
                                 </td>
