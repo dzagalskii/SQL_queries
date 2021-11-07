@@ -11,7 +11,8 @@
                             {% load static %}
                             <img src="{% static img %}" class="img-fluid" alt="..."
                                  style="width: 100%; margin-bottom: 25px">
-                            <form action="">
+                            <form action="" method="POST">
+                                {% csrf_token %}
                                 <div class="accordion" style="margin-bottom: 25px;">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -30,7 +31,8 @@
                                                 </div>
                                                 <div class="form-floating">
                                                 <textarea class="form-control" placeholder="SQL-код запроса"
-                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                          id="floatingTextarea2" style="height: 100px"
+                                                          name="first_query_answer"></textarea>
                                                     <label for="floatingTextarea2">SQL-код запроса</label>
                                                 </div>
                                             </div>
@@ -53,7 +55,8 @@
                                                 </div>
                                                 <div class="form-floating">
                                                 <textarea class="form-control" placeholder="SQL-код запроса"
-                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                          id="floatingTextarea2" style="height: 100px"
+                                                          name="second_query_answer"></textarea>
                                                     <label for="floatingTextarea2">SQL-код запроса</label>
                                                 </div>
                                             </div>
@@ -76,7 +79,8 @@
                                                 </div>
                                                 <div class="form-floating">
                                                 <textarea class="form-control" placeholder="SQL-код запроса"
-                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                          id="floatingTextarea2" style="height: 100px"
+                                                          name="third_query_answer"></textarea>
                                                     <label for="floatingTextarea2">SQL-код запроса</label>
                                                 </div>
                                             </div>

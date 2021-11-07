@@ -1,11 +1,8 @@
 from random import randint
-
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from dbserver.models import AST
-
-
-# Create your views here.
+from .forms import ControlWorkForm
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 
 def all_control_works(request):
@@ -27,13 +24,6 @@ def control_work(request, control_work_id):
         all_user_schemas = request.user.data_schemas.split()
         schema = all_user_schemas[control_work_id - 1]
 
-        # if schema == 'AST':
-        #     all_queries = AST.objects.all()
-        # elif schema == 'SPJ':
-        #     all_queries = SPJ.objects.all()
-        # elif schema == 'WF':
-        #     all_queries = WF.objects.all()
-
         all_queries = AST.objects.all()
         all_sec_queries = all_queries.values('db_index', 'db_request')
 
@@ -42,8 +32,34 @@ def control_work(request, control_work_id):
             random_three_queries.append(all_sec_queries[randint(0, len(all_sec_queries) - 1)])
         print(random_three_queries)
 
+        if request.method == 'POST':
+            form = ControlWorkForm(request.POST)
+            if form.is_valid():
+                cd = form.cleaned_data
+                print(cd)
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+
+                # TODO: сделать так:
+                '''
+                При отправке ответов сохранять в таблицу с контрольными работами
+                запись о том, что пользователь уже это решал и отвечал. Мб добавить
+                туда еще и оценку, надо подумать.
+                Если пользователь первый раз, он просто решает и отправляет ответ.
+                Если пользователь не первый раз и в базе уже есть его решение, просто
+                вывести ему его решение без возможности повторной отправки.
+                '''
+        else:
+            form = ControlWorkForm()
+
         return render(request, 'control_work.html',
-                      {'control_work_id': control_work_id,
+                      {'form': form,
+                       'control_work_id': control_work_id,
                        'img': 'img/' + all_user_schemas[control_work_id - 1] + '.jpg',
                        'random_three_queries': random_three_queries})
 
