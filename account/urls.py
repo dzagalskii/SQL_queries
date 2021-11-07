@@ -12,7 +12,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', views.activate, name="activate"),
     path('password_reset/',
          PasswordResetView.as_view(template_name='registration/password_reset_form_.html',
-        html_email_template_name='registration/password_reset_email_.html'),
+                                   html_email_template_name='registration/password_reset_email_.html'),
          name='password_reset',
          ),
     path('password_reset_done/',
