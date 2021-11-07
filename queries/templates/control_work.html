@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="vh-100">
+        <div class="container h-100" style="margin-top: -56px">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-10 col-lg-10 col-xl-9">
+                    <div style="border-radius: 15px; background-color: #ececec">
+                        <div class="card-body p-5 text-center" style="margin: 80px 0px 25px 0px">
+                            <h3 class="mb-5">Контрольная работа №{{ control_work_id }}</h3>
+                            {% load static %}
+                            <img src="{% static img %}" class="img-fluid" alt="..."
+                                 style="width: 100%; margin-bottom: 25px">
+                            <form action="">
+                                <div class="accordion" style="margin-bottom: 25px;">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#panelsStayOpen-collapseOne"
+                                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                                                Запрос №1
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                             aria-labelledby="panelsStayOpen-headingOne">
+                                            <div class="accordion-body" style="text-align: start;">
+                                                <div style="margin-bottom: 15px;">
+                                                    {{ random_three_queries.0.db_request }}
+                                                </div>
+                                                <div class="form-floating">
+                                                <textarea class="form-control" placeholder="SQL-код запроса"
+                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#panelsStayOpen-collapseTwo"
+                                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                Запрос №2
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                             aria-labelledby="panelsStayOpen-headingTwo">
+                                            <div class="accordion-body" style="text-align: start;">
+                                                <div style="margin-bottom: 15px;">
+                                                    {{ random_three_queries.1.db_request }}
+                                                </div>
+                                                <div class="form-floating">
+                                                <textarea class="form-control" placeholder="SQL-код запроса"
+                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#panelsStayOpen-collapseThree"
+                                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                Запрос №3
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                             aria-labelledby="panelsStayOpen-headingThree">
+                                            <div class="accordion-body" style="text-align: start;">
+                                                <div style="margin-bottom: 15px;">
+                                                    {{ random_three_queries.2.db_request }}
+                                                </div>
+                                                <div class="form-floating">
+                                                <textarea class="form-control" placeholder="SQL-код запроса"
+                                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Ответить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
