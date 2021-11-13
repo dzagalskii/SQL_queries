@@ -17,7 +17,7 @@ class DataScheme(models.Model):
 class ControlWork(models.Model):
     control_name = models.CharField(max_length=100)
     control_disc = models.CharField(max_length=200)
-    control_scheme = models.OneToOneField(DataScheme, on_delete=models.CASCADE, related_name='control_work')
+    control_scheme = models.OneToOneField(DataScheme,on_delete=models.CASCADE, related_name='control_work')
 
     def __str__(self):
         return f"Name:{self.control_name}\n"
@@ -27,7 +27,7 @@ class Query(models.Model):
     # db_index = models.CharField(max_length=10)
     query_request = models.CharField(max_length=250)
     query_answer = models.CharField(max_length=250)
-    query_scheme = models.OneToOneField(DataScheme, on_delete=models.CASCADE, related_name='query')
+    query_scheme = models.ForeignKey(DataScheme, on_delete=models.CASCADE, unique=False)
 
     def __str__(self):
         return f"Index:{self.query_request}\n"
