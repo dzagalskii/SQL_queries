@@ -613,7 +613,7 @@
     "pk": 1,
     "fields": {
         "control_name": "AST control work",
-        "control_disc": "AST work",
+        "control_desc": "AST work",
         "control_scheme": 1
     }
 },

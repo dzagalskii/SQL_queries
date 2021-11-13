@@ -16,8 +16,8 @@ class DataScheme(models.Model):
 
 class ControlWork(models.Model):
     control_name = models.CharField(max_length=100)
-    control_disc = models.CharField(max_length=200)
-    control_scheme = models.OneToOneField(DataScheme,on_delete=models.CASCADE, related_name='control_work')
+    control_desc = models.CharField(max_length=200)
+    control_scheme = models.OneToOneField(DataScheme, on_delete=models.CASCADE, related_name='control_work')
 
     def __str__(self):
         return f"Name:{self.control_name}\n"
