@@ -11,6 +11,7 @@ def all_control_works(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
 
+
     control_works = ControlWork.objects.all()
     return render(request, 'all_control_works.html',
                   {'control_works': control_works})
