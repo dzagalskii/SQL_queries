@@ -8,8 +8,7 @@
                     <div style="border-radius: 15px; background-color: #ececec">
                         <div class="card-body p-5 text-center" style="margin: 80px 0px 25px 0px">
                             <h3 class="mb-5">Контрольная работа №{{ control_work_id }}</h3>
-                            {% load static %}
-                            <img src="{% static img %}" class="img-fluid" alt="..."
+                            <img src="{{ exec_control_work.control_work.control_scheme.image_path.url }}" class="img-fluid" alt="..."
                                  style="width: 100%; margin-bottom: 25px">
                             {#                            <form action="" method="POST">#}
                             {#                                {% csrf_token %}#}
