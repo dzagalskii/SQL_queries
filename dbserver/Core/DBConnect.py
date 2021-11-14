@@ -1,62 +1,39 @@
 import psycopg2
 import pyodbc
 from .SqlRequestCheck import *
-from dbserver.models import AST
 
 
-
-
-def connect_to_postgres():
-    sql_request = AST.objects.get(db_index='CQ-2')
-    con = psycopg2.connect(
-        database="BoBSDB",
-        user="postgres",
-        password="admin",
-        host="127.0.0.1",
-        port="5432"
-    )
+def check_query(reference_code, user_code, database):
+    # TODO: ПЕРЕНЕСТИ ПАРАМЕТРЫ В SETTINGS
+    if database == "PG":
+        con = psycopg2.connect(
+            database="bobsdb",
+            user="postgres",
+            password="0512",
+            host="127.0.0.1",
+            port="5432"
+        )
+    elif database == "MS":
+        con = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
+                             "Server=DESKTOP-J2U6QDF;"
+                             "Database=master;"
+                             "Trusted_Connection=yes;")
+    else:
+        return None, "Unknown database"
     cur = con.cursor()
     try:
-        cur.execute(sql_request.db_answer)
-        rows = cur.fetchall()
-        print(rows)
-        cur.execute(
-            'SELECT ast1.Code  FROM ASt as ast1 inner join ASt as ast2 on ast1.UPSys = ast2.Code  WHERE ast1.Cost_pm <= ast2.Cost_pm;')
-        new_rows = cur.fetchall()
-        print(new_rows)
-        if rows == new_rows:
-            print('ok')
+        cur.execute(reference_code)
+        reference_output = cur.fetchall()
+
+        cur.execute(user_code)
+        user_output = cur.fetchall()
+
+        con.close()
+
+        if reference_output == user_output:
+            return "OK", None
         else:
-            find_error(rows, new_rows)
-
+            return find_error(reference_output, reference_output), None
     except Exception:
-        print(Exception)
+        return None, "Exception"
 
-    con.close()
-
-
-def connect_to_MsSQL():
-    sql_request = AST.objects.get(db_index='CQ-2')
-    con = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
-                         "Server=DESKTOP-J2U6QDF;"
-                         "Database=master;"
-                         "Trusted_Connection=yes;")
-    cur = con.cursor()
-    try:
-        cur.execute(sql_request.db_answer)
-        rows = cur.fetchall()
-        print(rows)
-        cur.execute(
-            'SELECT ast1.Name  FROM ASt as ast1 inner join ASt as ast2 on ast1.UPSys = ast2.Code  WHERE ast1.Cost_pm <= ast2.Cost_pm;')
-        new_rows = cur.fetchall()
-        print(new_rows)
-        if rows == new_rows:
-            print('ok')
-        else:
-            find_error(rows, new_rows)
-
-
-    except Exception:
-        print(Exception)
-
-    con.close()

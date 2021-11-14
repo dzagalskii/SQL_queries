@@ -1,4 +1,6 @@
 from random import sample
+
+from dbserver.Core.DBConnect import check_query
 from dbserver.models import AST
 from datetime import datetime
 from dbserver.models import ControlWork, ExecControlWork, Query, DataScheme
@@ -10,7 +12,6 @@ from django.http import HttpResponseRedirect
 def all_control_works(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
-
 
     control_works = ControlWork.objects.all()
     return render(request, 'all_control_works.html',
@@ -69,14 +70,24 @@ def control_work(request, control_work_id):
                     exec_control_work.done = True
                     exec_control_work.save()
 
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
-                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ТУТ ОЧЕНЬ НУЖЕН ФИЛЬТР !!!!!!!!!!!
+
+                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                                                user_code=exec_control_work.query_1_answer,
+                                                database=request.user.database)
+                    print(output, error)
+                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                                                user_code=exec_control_work.query_1_answer,
+                                                database=request.user.database)
+                    print(output, error)
+                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                                                user_code=exec_control_work.query_1_answer,
+                                                database=request.user.database)
+                    print(output, error)
+
+
+
+
         else:
             form = ControlWorkForm()
         return render(request, 'control_work.html',
