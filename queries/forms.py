@@ -3,6 +3,6 @@ from django import forms
 
 # Форма контрольной работы
 class ControlWorkForm(forms.Form):
-    first_query_answer = forms.CharField(required=False)
-    second_query_answer = forms.CharField(required=False)
-    third_query_answer = forms.CharField(required=False)
+    query_1_answer = forms.CharField(required=False)
+    query_2_answer = forms.CharField(required=False)
+    query_3_answer = forms.CharField(required=False)

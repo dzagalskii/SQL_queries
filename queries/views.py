@@ -1,78 +1,86 @@
-from random import randint
+from random import sample
 from dbserver.models import AST
-from dbserver.models import ControlWork, ExecControlWork
+from datetime import datetime
+from dbserver.models import ControlWork, ExecControlWork, Query, DataScheme
 from .forms import ControlWorkForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 
 def all_control_works(request):
-    if request.user.is_authenticated:
-        # all_user_schemas = request.user.data_schemas.split()
-        # return render(request, 'all_control_works.html',
-        #               {'img_1': 'img/' + all_user_schemas[0] + '.jpg',
-        #                'img_2': 'img/' + all_user_schemas[1] + '.jpg',
-        #                'img_3': 'img/' + all_user_schemas[2] + '.jpg'})
-        control_works = ControlWork.objects.all()
-        return render(request, 'all_control_works.html',
-                      {'control_works': control_works})
-    else:
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/account/login/')
+
+    control_works = ControlWork.objects.all()
+    return render(request, 'all_control_works.html',
+                  {'control_works': control_works})
 
 
 def control_work(request, control_work_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/account/login/')
+
     control_work_id = int(control_work_id)
-    if request.user.is_authenticated:
 
-        if not ControlWork.objects.filter(pk=control_work_id).exists():
-            return HttpResponseRedirect('/queries')
+    if not ControlWork.objects.filter(pk=control_work_id).exists():
+        return HttpResponseRedirect('/queries')
 
-        control_work_ = ControlWork.objects.get(pk=control_work_id)
+    control_work_ = ControlWork.objects.get(pk=control_work_id)
 
-        if not ExecControlWork.objects.filter(control_work=control_work_, user=request.user):
+    if not ExecControlWork.objects.filter(control_work=control_work_,
+                                          user=request.user).exists():
+        all_control_work_queries = Query.objects.filter(query_scheme=control_work_.control_scheme).order_by("?")
+        numbers = range(0, len(all_control_work_queries))
+        user_sample = sample(numbers, 3)
 
+        exec_control_work = ExecControlWork(
+            user=request.user,
+            control_work=control_work_,
+            start_time=datetime.now(),
+            end_time=datetime.now(),
+            query_1=all_control_work_queries[user_sample[0]],
+            query_2=all_control_work_queries[user_sample[1]],
+            query_3=all_control_work_queries[user_sample[2]],
+        )
+        exec_control_work.save()
+    else:
+        exec_control_work = ExecControlWork.objects.get(control_work=control_work_,
+                                                        user=request.user)
 
-        # all_user_schemas = request.user.data_schemas.split()
-        # schema = all_user_schemas[control_work_id - 1]
-        #
-        # all_queries = AST.objects.all()
-        # all_sec_queries = all_queries.values('db_index', 'db_request')
-        #
-        # random_three_queries = []
-        # for i in range(3):
-        #     random_three_queries.append(all_sec_queries[randint(0, len(all_sec_queries) - 1)])
-        # print(random_three_queries)
-
+    if not exec_control_work.done:
         if request.method == 'POST':
             form = ControlWorkForm(request.POST)
             if form.is_valid():
                 cd = form.cleaned_data
-                print(cd)
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
-                # ТУТ ДОЛЖНО БЫТЬ ЧТО-ТО ПОЛЕЗНОЕ
+                if request.POST.get('save'):
+                    print("save")
+                    exec_control_work.query_1_answer = cd.get("query_1_answer")
+                    exec_control_work.query_2_answer = cd.get("query_2_answer")
+                    exec_control_work.query_3_answer = cd.get("query_3_answer")
+                    exec_control_work.end_time = datetime.now()
+                    exec_control_work.save()
+                elif request.POST.get('done'):
+                    print("done")
+                    exec_control_work.query_1_answer = cd.get("query_1_answer")
+                    exec_control_work.query_2_answer = cd.get("query_2_answer")
+                    exec_control_work.query_3_answer = cd.get("query_3_answer")
+                    exec_control_work.end_time = datetime.now()
+                    exec_control_work.done = True
+                    exec_control_work.save()
 
-                # TODO: сделать так:
-                '''
-                При отправке ответов сохранять в таблицу с контрольными работами
-                запись о том, что пользователь уже это решал и отвечал. Мб добавить
-                туда еще и оценку, надо подумать.
-                Если пользователь первый раз, он просто решает и отправляет ответ.
-                Если пользователь не первый раз и в базе уже есть его решение, просто
-                вывести ему его решение без возможности повторной отправки.
-                '''
-                # TODO: В МОДЕЛЬ ДОЛЖНО БЫТЬ ПОЛЕ С АЙДИ ЗАПРОСА!!!!!!!!!
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
+                    # TODO: ПРОВЕРКА ЗАПРОСОВ ПОЛЬЗОВАТЕЛЯ + ВЫВОД ЕМУ РЕЗУЛЬТАТОВ КАКИМ-ТО ОБРАЗОМ
         else:
             form = ControlWorkForm()
-
         return render(request, 'control_work.html',
                       {'form': form,
-                       'control_work_id': control_work_id,
-                       'img': 'img/' + all_user_schemas[control_work_id - 1] + '.jpg',
-                       'random_three_queries': random_three_queries})
+                       'exec_control_work': exec_control_work})
     else:
-        return HttpResponseRedirect('/account/login/')
+        return render(request, 'control_work_done.html',
+                      {'exec_control_work': exec_control_work})

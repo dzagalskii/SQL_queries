@@ -44,7 +44,7 @@ class ExecControlWork(models.Model):
     query_1_answer = models.CharField(max_length=250)
     query_2_answer = models.CharField(max_length=250)
     query_3_answer = models.CharField(max_length=250)
-    query_done = models.BooleanField(default=False)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return f"User: {self.user.username}\n" \
