@@ -44,6 +44,9 @@ class ExecControlWork(models.Model):
     query_1_answer = models.CharField(max_length=250)
     query_2_answer = models.CharField(max_length=250)
     query_3_answer = models.CharField(max_length=250)
+    query_1_result = models.CharField(max_length=100)
+    query_2_result = models.CharField(max_length=100)
+    query_3_result = models.CharField(max_length=100)
     done = models.BooleanField(default=False)
 
     def __str__(self):

@@ -3,3 +3,4 @@ psycopg2~=2.9.1
 
 six~=1.15.0
 pyodbc~=4.0.32
+Pillow~=8.4.0
