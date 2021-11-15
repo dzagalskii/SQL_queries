@@ -79,21 +79,21 @@ def control_work(request, control_work_id):
                                  "Обратитесь к системному администратору. (Ошибка: {})".format(error)
                     exec_control_work.query_1_result = result
 
-                    result, error = check_query(reference_code=exec_control_work.query_1.query_answer,
-                                                user_code=exec_control_work.query_1_answer,
+                    result, error = check_query(reference_code=exec_control_work.query_2.query_answer,
+                                                user_code=exec_control_work.query_2_answer,
                                                 database=request.user.database)
                     if error:
                         result = "При проверке запроса возникла ошибка. " \
                                  "Обратитесь к системному администратору. (Ошибка: {})".format(error)
-                    exec_control_work.query_1_result = result
+                    exec_control_work.query_2_result = result
 
-                    result, error = check_query(reference_code=exec_control_work.query_1.query_answer,
-                                                user_code=exec_control_work.query_1_answer,
+                    result, error = check_query(reference_code=exec_control_work.query_3.query_answer,
+                                                user_code=exec_control_work.query_3_answer,
                                                 database=request.user.database)
                     if error:
                         result = "При проверке запроса возникла ошибка. " \
                                  "Обратитесь к системному администратору. (Ошибка: {})".format(error)
-                    exec_control_work.query_1_result = result
+                    exec_control_work.query_3_result = result
                     exec_control_work.save()
         else:
             form = ControlWorkForm()
