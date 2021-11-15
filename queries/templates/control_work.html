@@ -12,7 +12,7 @@
                                  style="width: 100%; margin-bottom: 25px">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                <div class="accordion" style="margin-bottom: 25px;">
+                                <div class="accordion">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                             <button class="accordion-button collapsed" type="button"
@@ -31,10 +31,8 @@
                                                 <div class="form-floating">
                                                     <textarea class="form-control" placeholder="SQL-код запроса"
                                                               id="floatingTextarea2" style="height: 100px"
-                                                              name="query_1_answer">
-                                                        {{ exec_control_work.query_1_answer }}
-                                                    </textarea>
-                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                              name="query_1_answer">{{ exec_control_work.query_1_answer }}</textarea>
+                                                    <label for="floatingTextarea2">Ваш SQL-код запроса 1</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,10 +55,8 @@
                                                 <div class="form-floating">
                                                     <textarea class="form-control" placeholder="SQL-код запроса"
                                                               id="floatingTextarea2" style="height: 100px"
-                                                              name="query_2_answer">
-                                                        {{ exec_control_work.query_2_answer }}
-                                                    </textarea>
-                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                              name="query_2_answer">{{ exec_control_work.query_2_answer }}</textarea>
+                                                    <label for="floatingTextarea2">Ваш SQL-код запроса 2</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -82,20 +78,18 @@
                                                 </div>
                                                 <div class="form-floating">
                                                     <textarea class="form-control" placeholder="SQL-код запроса"
-                                                              id="floatingTextarea2" style="height: 100px"
-                                                              name="query_3_answer">
-                                                        {{ exec_control_work.query_3_answer }}
-                                                    </textarea>
-                                                    <label for="floatingTextarea2">SQL-код запроса</label>
+                                                              id="floatingTextarea3" style="height: 100px"
+                                                              name="query_3_answer">{{ exec_control_work.query_3_answer }}</textarea>
+                                                    <label for="floatingTextarea3">Ваш SQL-код запроса 3</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="save" value="save" class="btn btn-primary">Сохранить
-                                </button>
-                                <button type="submit" name="done" value="done" class="btn btn-success">Закончить
-                                </button>
+                                <div style="margin-top: 10px">
+                                    <button type="submit" name="save" value="save" class="btn btn-primary">Сохранить</button>
+                                    <button type="submit" name="done" value="done" class="btn btn-success">Закончить</button>
+                                </div>
                             </form>
                         </div>
                     </div>

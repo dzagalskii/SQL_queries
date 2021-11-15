@@ -94,7 +94,12 @@ def control_work(request, control_work_id):
                         result = "При проверке запроса возникла ошибка. " \
                                  "Обратитесь к системному администратору. (Ошибка: {})".format(error)
                     exec_control_work.query_3_result = result
+
+                    # exec_control_work.query_1_result = "OK"
+                    # exec_control_work.query_2_result = "Ошибка: запрос выдал больше строк, чем ожидалось."
+                    # exec_control_work.query_3_result = "Ошибка: запрос выдал меньше строк, чем ожидалось."
                     exec_control_work.save()
+                    return HttpResponseRedirect('/queries/{}'.format(control_work_id))
         else:
             form = ControlWorkForm()
         return render(request, 'control_work.html',

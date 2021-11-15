@@ -8,11 +8,10 @@
                     <div style="border-radius: 15px; background-color: #ececec">
                         <div class="card-body p-5 text-center" style="margin: 80px 0px 25px 0px">
                             <h3 class="mb-5">Контрольная работа №{{ control_work_id }}</h3>
-                            <img src="{{ exec_control_work.control_work.control_scheme.image_path.url }}" class="img-fluid" alt="..."
+                            <img src="{{ exec_control_work.control_work.control_scheme.image_path.url }}"
+                                 class="img-fluid" alt="..."
                                  style="width: 100%; margin-bottom: 25px">
-                            {#                            <form action="" method="POST">#}
-                            {#                                {% csrf_token %}#}
-                            <div class="accordion" style="margin-bottom: 25px;">
+                            <div class="accordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button class="accordion-button collapsed" type="button"
@@ -37,6 +36,17 @@
                                                     </textarea>
                                                 <label for="floatingTextarea2">SQL-код запроса</label>
                                             </div>
+                                            {% if exec_control_work.query_1_result == "OK" %}
+                                                <div class="alert alert-success" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ правильный, молодец!</span>
+                                                </div>
+                                            {% else %}
+                                                <div class="alert alert-danger" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ неправильный, ошибка: {{ exec_control_work.query_1_result }}</span>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -64,6 +74,17 @@
                                                     </textarea>
                                                 <label for="floatingTextarea2">SQL-код запроса</label>
                                             </div>
+                                            {% if exec_control_work.query_2_result == "OK" %}
+                                                <div class="alert alert-success" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ правильный, молодец!</span>
+                                                </div>
+                                            {% else %}
+                                                <div class="alert alert-danger" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ неправильный, ошибка: {{ exec_control_work.query_2_result }}</span>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -91,15 +112,21 @@
                                                     </textarea>
                                                 <label for="floatingTextarea2">SQL-код запроса</label>
                                             </div>
+                                            {% if exec_control_work.query_3_result == "OK" %}
+                                                <div class="alert alert-success" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ правильный, молодец!</span>
+                                                </div>
+                                            {% else %}
+                                                <div class="alert alert-danger" role="alert"
+                                                     style="margin-top: 15px; border-radius: 10px;">
+                                                    <span>Ответ неправильный, ошибка: {{ exec_control_work.query_3_result }}</span>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {#                                <button type="submit" name="save" value="save" class="btn btn-primary">Сохранить#}
-                            {#                                </button>#}
-                            {#                                <button type="submit" name="done" value="done" class="btn btn-success">Закончить#}
-                            {#                                </button>#}
-                            {#                            </form>#}
                         </div>
                     </div>
                 </div>
