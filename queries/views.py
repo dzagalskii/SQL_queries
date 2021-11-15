@@ -1,7 +1,6 @@
 from random import sample
 
 from dbserver.Core.DBConnect import check_query
-from dbserver.models import AST
 from datetime import datetime
 from dbserver.models import ControlWork, ExecControlWork, Query, DataScheme
 from .forms import ControlWorkForm
@@ -70,24 +69,32 @@ def control_work(request, control_work_id):
                     exec_control_work.done = True
                     exec_control_work.save()
 
-                    # TODO: ТУТ ОЧЕНЬ НУЖЕН ФИЛЬТР !!!!!!!!!!!
+                    # TODO: ТУТ ОБЯЗАТЕЛЬНО НУЖЕН ФИЛЬТР UPDATE, DELETE и ПРОЧЕГО КАЛА !!!!!!!!!!!
 
-                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                    result, error = check_query(reference_code=exec_control_work.query_1.query_answer,
                                                 user_code=exec_control_work.query_1_answer,
                                                 database=request.user.database)
-                    print(output, error)
-                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                    if error:
+                        result = "При проверке запроса возникла ошибка. " \
+                                 "Обратитесь к системному администратору. (Ошибка: {})".format(error)
+                    exec_control_work.query_1_result = result
+
+                    result, error = check_query(reference_code=exec_control_work.query_1.query_answer,
                                                 user_code=exec_control_work.query_1_answer,
                                                 database=request.user.database)
-                    print(output, error)
-                    output, error = check_query(reference_code=exec_control_work.query_1.query_answer,
+                    if error:
+                        result = "При проверке запроса возникла ошибка. " \
+                                 "Обратитесь к системному администратору. (Ошибка: {})".format(error)
+                    exec_control_work.query_1_result = result
+
+                    result, error = check_query(reference_code=exec_control_work.query_1.query_answer,
                                                 user_code=exec_control_work.query_1_answer,
                                                 database=request.user.database)
-                    print(output, error)
-
-
-
-
+                    if error:
+                        result = "При проверке запроса возникла ошибка. " \
+                                 "Обратитесь к системному администратору. (Ошибка: {})".format(error)
+                    exec_control_work.query_1_result = result
+                    exec_control_work.save()
         else:
             form = ControlWorkForm()
         return render(request, 'control_work.html',

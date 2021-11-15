@@ -5,7 +5,7 @@ admin.site.register(DataScheme)
 admin.site.register(ControlWork)
 admin.site.register(Query)
 admin.site.register(ExecControlWork)
-admin.site.register(AST)
+# admin.site.register(AST)
 
 
 

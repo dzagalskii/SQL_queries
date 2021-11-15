@@ -54,10 +54,10 @@ class ExecControlWork(models.Model):
                f"Control work: {self.control_work}\n"
 
 
-class AST(models.Model):
-    db_index = models.CharField(max_length=10)
-    db_request = models.CharField(max_length=250)
-    db_answer = models.CharField(max_length=250)
-
-    def __str__(self):
-        return f"Index:{self.db_index}\n"
+# class AST(models.Model):
+#     db_index = models.CharField(max_length=10)
+#     db_request = models.CharField(max_length=250)
+#     db_answer = models.CharField(max_length=250)
+#
+#     def __str__(self):
+#         return f"Index:{self.db_index}\n"
