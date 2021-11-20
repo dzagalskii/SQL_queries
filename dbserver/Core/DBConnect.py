@@ -13,7 +13,6 @@ def filter_query(user_code):
 
 
 def check_query(reference_code, user_code, database):
-    # TODO: ПЕРЕНЕСТИ ПАРАМЕТРЫ В SETTINGS
     if filter_query(user_code) == -1:
         return None, "Недопустимый запрос"
 

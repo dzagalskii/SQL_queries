@@ -3,9 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# Create your models here.
-
-
 class DataScheme(models.Model):
     scheme_name = models.CharField(max_length=10)
     image_path = models.ImageField(upload_to='static')
@@ -24,7 +21,6 @@ class ControlWork(models.Model):
 
 
 class Query(models.Model):
-    # db_index = models.CharField(max_length=10)
     query_request = models.CharField(max_length=250)
     query_answer = models.CharField(max_length=250)
     query_scheme = models.ForeignKey(DataScheme, on_delete=models.CASCADE, unique=False)
@@ -52,12 +48,3 @@ class ExecControlWork(models.Model):
     def __str__(self):
         return f"User: {self.user.username}\n" \
                f"Control work: {self.control_work}\n"
-
-
-# class AST(models.Model):
-#     db_index = models.CharField(max_length=10)
-#     db_request = models.CharField(max_length=250)
-#     db_answer = models.CharField(max_length=250)
-#
-#     def __str__(self):
-#         return f"Index:{self.db_index}\n"

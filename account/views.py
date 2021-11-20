@@ -1,6 +1,6 @@
 from random import randint
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import SignupForm, LoginForm
 from django.contrib.sites.shortcuts import get_current_site
@@ -48,7 +48,7 @@ def signup(request):
                     user.is_active = False
                     user.data_schemas = '{} {} {}'.format(DATA_SCHEMAS[randint(0, 2)],
                                                           DATA_SCHEMAS[randint(0, 2)],
-                                                          DATA_SCHEMAS[randint(0, 2)],)
+                                                          DATA_SCHEMAS[randint(0, 2)], )
                     user.save()
                     current_site = get_current_site(request)
                     mail_subject = 'Активация аккаунта SQL Queries'

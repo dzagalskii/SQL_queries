@@ -6,11 +6,10 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-10 col-lg-10 col-xl-9">
                     <div style="border-radius: 15px; background-color: #ececec">
-
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5">Контрольные работы</h3>
                             {% for control_work in control_works %}
-                                <div class="card text-start">
+                                <div class="card text-start" style="margin-bottom: 15px;">
                                     <div class="card-header">
                                         Контрольная работа {{ control_work.id }}
                                     </div>
@@ -32,7 +31,8 @@
                                                                 aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <img src="{{   control_work.control_scheme.image_path.url }}"    class="img-fluid"
+                                                        <img src="{{ control_work.control_scheme.image_path.url }}"
+                                                             class="img-fluid"
                                                              alt="..." style="width: 100%">
                                                     </div>
                                                 </div>
@@ -43,8 +43,8 @@
                                             решению</a>
                                     </div>
                                 </div>
-                                </div>
                             {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
