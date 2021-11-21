@@ -20,14 +20,26 @@ def check_null(row, new_row):
     return 0
 
 
+def check_attributes(row, new_row):
+    for i in range(0, len(row)):
+        if len(row[i]) < len(new_row[i]):
+            return -1
+        elif len(row[i]) > len(new_row[i]):
+            return 1
+    return 0
+
+
 def find_error(rows, new_rows):
-    check_null_res = check_null(rows, new_rows)
-    if check_null_res == -1:
-        return 'Проблема с NULL'
     check_len_res = check_len_of_rows(len(rows), len(new_rows))
     if check_len_res == 1:
         return 'Недостаточно данных'
     elif check_len_res == -1:
         return 'Слишком много данных'
     else:
-        return 'Неверный результат'
+        check_atr_res = check_attributes(rows, new_rows)
+        if check_atr_res == -1:
+            return 'Недостаточно данных в атрибутах'
+        elif check_atr_res == -1:
+            return 'Недостаточно данных в атрибутах'
+        else:
+            return 'Неверный результат'

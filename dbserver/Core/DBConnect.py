@@ -1,4 +1,5 @@
 import psycopg2
+import cx_Oracle
 import pyodbc
 from .SqlRequestCheck import *
 
@@ -32,8 +33,19 @@ def check_query(reference_code, user_code, database):
                                  "Trusted_Connection=yes;")
         except:
             return None, "Error with DB connection"
+    elif database == "Oracle":
+        try:
+            con = cx_Oracle.connect(
+                'username',
+                'config.password',
+                'config.dsn',
+                encoding='UTF-8')
+
+        except:
+            return None, "Error with DB connection"
     else:
         return None, "Unknown database"
+
     cur = con.cursor()
     try:
         cur.execute(reference_code)
