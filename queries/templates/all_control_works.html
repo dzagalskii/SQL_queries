@@ -19,14 +19,14 @@
                                     </div>
                                     <div class="card-footer">
                                         <a type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                           data-bs-target="#controlWork1Modal">Посмотреть схему данных</a>
-                                        <div class="modal fade" id="controlWork1Modal" tabindex="-1"
+                                           data-bs-target="#controlWork1Modal{{ control_work.id }}">Посмотреть схему данных</a>
+                                        <div class="modal fade" id="controlWork1Modal{{ control_work.id }}" tabindex="-1"
                                              aria-labelledby="controlWork1ModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="controlWork1ModalLabel">Ваша схема
-                                                            данных для КР №1: </h5>
+                                                            данных для КР {{ control_work.id }}</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                     </div>
