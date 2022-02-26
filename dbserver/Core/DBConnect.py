@@ -1,5 +1,5 @@
 import psycopg2
-import cx_Oracle
+#import cx_Oracle
 import pyodbc
 from .SqlRequestCheck import *
 
