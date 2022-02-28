@@ -15,6 +15,6 @@ RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate --run-syncdb
 RUN python3 manage.py loaddata fixtures/DB.json
 #RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'password')" | python3 manage.py shell
-RUN python3 manage.py createsuperuser --noinput
+RUN python3 manage.py createsuperuser --email ochko@maol.com --noinput
 EXPOSE 8000
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000" ]
