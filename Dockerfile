@@ -12,6 +12,6 @@ COPY . /code/
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate --run-syncdb
 RUN python3 manage.py loaddata fixtures/DB.json
-RUN python3 manage.py createsuperuser --username admin --email admin@admin.com --password adminpassword --noinput
+RUN python3 manage.py createsuperuser --username admin --password admin --email foo@foo.foo
 EXPOSE 8000
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000" ]
