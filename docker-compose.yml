@@ -3,6 +3,7 @@ version: "3.3"
 services:
 
   db:
+    container_name: "postgres_container"
     image: postgres
     restart: always
     environment:
@@ -13,7 +14,7 @@ services:
       - "5432:5432"
 
   app:
-    container_name: app_container
+    container_name: "app_container"
     build:
       context: ./
       dockerfile: Dockerfile
