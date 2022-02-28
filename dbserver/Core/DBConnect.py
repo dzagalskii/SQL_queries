@@ -18,13 +18,16 @@ def check_query(reference_code, user_code, database):
         return None, "Недопустимый запрос"
 
     if database == "PG":
-        con = psycopg2.connect(
-            database="BoBSDB",
-            user="postgres",
-            password="postgres",
-            host="0.0.0.0",
-            port="5432"
-        )
+        try:
+            con = psycopg2.connect(
+                database="BoBSDB",
+                user="postgres",
+                password="postgres",
+                host="172.18.0.4",
+                port="5432"
+            )
+        except:
+            return None, "Error with DB connection"
     elif database == "MS":
         try:
             con = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
