@@ -22,7 +22,7 @@ def check_query(reference_code, user_code, database):
             database="BoBSDB",
             user="postgres",
             password="postgres",
-            host="127.0.0.1",
+            host="0.0.0.0",
             port="5432"
         )
     elif database == "MS":
