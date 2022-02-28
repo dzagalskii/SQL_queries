@@ -8,6 +8,8 @@ RUN apt-get install -y python3.8 python3-pip python3.8-dev unixodbc-dev
 RUN pip install --upgrade pip
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
+RUN python3 manage.py makemigrations
+RUN python3 manage.py migrate
 COPY . /code/
 EXPOSE 8000
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000" ]
