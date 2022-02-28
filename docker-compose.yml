@@ -16,5 +16,5 @@ services:
     container_name: app_container
     build:
       dockerfile: Dockerfile
-      ports:
-        - "8000:8000"
+    ports:
+      - "8000:8000"
