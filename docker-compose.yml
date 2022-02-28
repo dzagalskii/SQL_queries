@@ -2,16 +2,25 @@ version: "3.3"
 
 services:
 
-  db:
+  postgres:
     container_name: "postgres_container"
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: "postgres"
+      POSTGRES_DB: "BoBSDB"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
+
+  mssql:
+    container_name: "mssql_container"
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Secret1234
+    ports:
+      - "1433:1433"
 
   app:
     container_name: "app_container"

@@ -21,7 +21,7 @@ def check_query(reference_code, user_code, database):
         con = psycopg2.connect(
             database="BoBSDB",
             user="postgres",
-            password="admin",
+            password="postgres",
             host="127.0.0.1",
             port="5432"
         )
