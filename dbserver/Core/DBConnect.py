@@ -30,8 +30,8 @@ def check_query(reference_code, user_code, database):
             return None, "Error with DB connection"
     elif database == "MS":
         try:
-            con = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
-                                 "Server=DESKTOP-J2U6QDF;"
+            con = pyodbc.connect("Driver=SQLDocker;"
+                                 "Server=localhost;"
                                  "Database=master;"
                                  "Trusted_Connection=yes;")
         except:
