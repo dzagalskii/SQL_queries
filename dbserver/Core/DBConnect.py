@@ -29,16 +29,15 @@ def check_query(reference_code, user_code, database):
         except:
             return None, "Error with DB connection"
     elif database == "MS":
-        con = ''
         try:
             con = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};"
-                                 "SERVER=10.1.0.101;"
+                                 "SERVER=db;"
                                  "PORT=1433;"
                                  "DATABASE=master;"
                                  "UID=sa;"
                                  "PWD=Secret1234")
         except:
-            return None, "Error with DB connection {}".format(con)
+            return None, "Error with DB connection"
     elif database == "Oracle":
         try:
             con = cx_Oracle.connect(

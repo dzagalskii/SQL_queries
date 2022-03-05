@@ -22,6 +22,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Secret1234
+      - DATABASE_PUBLIC_URL=db
     ports:
       - "1433:1433"
     networks:
