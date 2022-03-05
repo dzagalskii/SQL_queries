@@ -30,8 +30,7 @@ def check_query(reference_code, user_code, database):
             return None, "Error with DB connection"
     elif database == "MS":
         try:
-            con = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};"
-                                 "SERVER=mssql_container;"
+            con = pyodbc.connect("SERVER=mssql_container;"
                                  "PORT=1433;"
                                  "DATABASE=msdb;"
                                  "UID=sa;"
