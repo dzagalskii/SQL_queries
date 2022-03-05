@@ -29,3 +29,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
+         aux_addresses:
+          postgres: 10.5.0.5
+          mssql: 10.5.0.6
+          app: 10.5.0.7
