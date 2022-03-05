@@ -31,7 +31,7 @@ def check_query(reference_code, user_code, database):
     elif database == "MS":
         try:
             con = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};"
-                                 "SERVER=localhost;"
+                                 "SERVER=10.1.0.101;"
                                  "PORT=1433;"
                                  "DATABASE=master;"
                                  "UID=sa;"
