@@ -12,6 +12,9 @@ services:
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
+    networks:
+      bridge:
+        - ipv4_address: 10.1.0.100
 
   mssql:
     container_name: "mssql_container"
@@ -31,13 +34,9 @@ services:
       - "8000:8000"
 
 networks:
-  vpcbr:
+  bridge:
     driver: bridge
     ipam:
-     config:
-       - subnet: 10.5.0.0/16
-         gateway: 10.5.0.1
-         aux_addresses:
-          postgres: 10.5.0.5
-          mssql: 10.5.0.6
-          app: 10.5.0.7
+      driver: default
+        config:
+          - subnet: 10.1.0.0/24
