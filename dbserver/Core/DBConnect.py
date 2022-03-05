@@ -33,7 +33,7 @@ def check_query(reference_code, user_code, database):
             con = pyodbc.connect("DRIVER=ODBC Driver 17 for SQL Server;"
                                  "SERVER=localhost;"
                                  "PORT=1433;"
-                                 "DATABASE=DATABASE;"
+                                 "DATABASE=master;"
                                  "UID=sa;"
                                  "PWD=Secret1234")
         except:
