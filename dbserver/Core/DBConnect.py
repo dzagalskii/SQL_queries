@@ -37,7 +37,7 @@ def check_query(reference_code, user_code, database):
                                  "UID=sa;"
                                  "PWD=Secret1234")
         except:
-            return None, "Error with DB connection"
+            return None, "Error with DB connection {}".format(con)
     elif database == "Oracle":
         try:
             con = cx_Oracle.connect(
