@@ -30,7 +30,7 @@ def check_query(reference_code, user_code, database):
             return None, "Error with DB connection"
     elif database == "MS":
         try:
-            con = pyodbc.connect("DRIVER={SQLDocker};"
+            con = pyodbc.connect("DRIVER={FreeTDS};"
                                  "SERVER=mssql_container;"
                                  "PORT=1433;"
                                  "DATABASE=msdb;"
