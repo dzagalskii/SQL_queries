@@ -26,14 +26,14 @@ def check_query(reference_code, user_code, database):
                 host="10.1.0.100",
                 port="5432"
             )
-        except:
-            return None, "Error with DB connection"
+        except Exception as e:
+            return None, "Error with DB connection {}".format(e)
     elif database == "MS":
         try:
             con = pyodbc.connect("DRIVER={FreeTDS};"
                                  "SERVER=mssql_container;"
                                  "PORT=1433;"
-                                 "DATABASE=msdb;"
+                                 "DATABASE=master;"
                                  "UID=sa;"
                                  "PWD=Secret1234")
         except Exception as e:
@@ -65,6 +65,6 @@ def check_query(reference_code, user_code, database):
             return "OK", None
         else:
             return find_error(reference_output, user_output), None
-    except Exception:
+    except Exception as e:
         con.close()
-        return None, "Exception"
+        return None, e
