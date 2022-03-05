@@ -6,7 +6,7 @@ ENV DJANGO_SUPERUSER_PASSWORD=testpass
 WORKDIR /code
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y python3.8 python3-pip python3.8-dev unixodbc-dev freetds-dev freetds-bin unixodbc unixodbc-dev tdsodbc
+RUN apt-get install -y python3.8 python3-pip python3.8-dev freetds-dev freetds-bin unixodbc unixodbc-dev tdsodbc
 RUN echo "[FreeTDS]\n\
 Description = FreeTDS unixODBC Driver\n\
 Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
