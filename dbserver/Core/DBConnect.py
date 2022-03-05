@@ -36,8 +36,8 @@ def check_query(reference_code, user_code, database):
                                  "DATABASE=msdb;"
                                  "UID=sa;"
                                  "PWD=Secret1234")
-        except:
-            return None, "Error with DB connection"
+        except Exception:
+            return None, "Error with DB connection {}".format(Exception)
     elif database == "Oracle":
         try:
             con = cx_Oracle.connect(
