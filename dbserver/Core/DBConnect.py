@@ -23,7 +23,7 @@ def check_query(reference_code, user_code, database):
                 database="BoBSDB",
                 user="postgres",
                 password="postgres",
-                host="172.18.0.4",
+                host="10.1.0.100",
                 port="5432"
             )
         except:
