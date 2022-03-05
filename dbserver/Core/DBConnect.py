@@ -35,8 +35,7 @@ def check_query(reference_code, user_code, database):
                                  "PORT=1433;"
                                  "DATABASE=master;"
                                  "UID=sa;"
-                                 "PWD=Secret1234"
-                                 "Trusted_Connection=yes;")
+                                 "PWD=Secret1234")
         except:
             return None, "Error with DB connection"
     elif database == "Oracle":
