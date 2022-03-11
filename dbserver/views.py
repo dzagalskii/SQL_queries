@@ -45,9 +45,6 @@ def index(request):
         postgres_cur.execute(postgres_init_script)
         mssql_cur.execute(mssql_init_script)
 
-        print(postgres_cur.fetchall())
-        print(mssql_cur.fetchall())
-
         postgres_con.close()
         mssql_con.close()
 
