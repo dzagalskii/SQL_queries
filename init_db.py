@@ -1,3 +1,7 @@
+import psycopg2
+import pyodbc
+
+
 def init_db():
     try:
         postgres_con = psycopg2.connect(
