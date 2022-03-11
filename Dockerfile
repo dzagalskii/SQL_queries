@@ -16,6 +16,7 @@ RUN pip install --upgrade pip
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY . /code/
+RUN sleep 30
 RUN python3 init_db.py
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate --run-syncdb

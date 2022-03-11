@@ -29,9 +29,6 @@ services:
         ipv4_address: 10.1.0.101
 
   app:
-    depends_on:
-      - postgres
-      - mssql
     container_name: "app_container"
     build:
       context: ./
