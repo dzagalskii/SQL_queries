@@ -43,11 +43,11 @@ def index(request):
         mssql_cur.execute(mssql_init_script)
 
         postgres_con.close()
-        cmssql_conon.close()
+        mssql_con.close()
 
     except Exception as e:
         postgres_con.close()
-        cmssql_conon.close()
+        mssql_con.close()
         print("Error with DB initialization: {}".format(e))
         return HttpResponse("Error with DB initialization: {}".format(e))
     return HttpResponse("Hello, world. You're at the polls index.")
