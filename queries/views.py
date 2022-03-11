@@ -104,7 +104,9 @@ def control_work(request, control_work_id):
             form = ControlWorkForm()
         return render(request, 'control_work.html',
                       {'form': form,
-                       'exec_control_work': exec_control_work})
+                       'exec_control_work': exec_control_work,
+                       'control_work_id': control_work_id})
     else:
         return render(request, 'control_work_done.html',
-                      {'exec_control_work': exec_control_work})
+                      {'exec_control_work': exec_control_work,
+                       'control_work_id': control_work_id})

@@ -1,5 +1,5 @@
 import psycopg2
-import cx_Oracle
+#import cx_Oracle
 import pyodbc
 from .SqlRequestCheck import *
 
@@ -18,21 +18,26 @@ def check_query(reference_code, user_code, database):
         return None, "Недопустимый запрос"
 
     if database == "PG":
-        con = psycopg2.connect(
-            database="BoBSDB",
-            user="postgres",
-            password="admin",
-            host="127.0.0.1",
-            port="5432"
-        )
+        try:
+            con = psycopg2.connect(
+                database="BoBSDB",
+                user="postgres",
+                password="postgres",
+                host="10.1.0.100",
+                port="5432"
+            )
+        except Exception as e:
+            return None, "Error with DB connection {}".format(e)
     elif database == "MS":
         try:
-            con = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
-                                 "Server=DESKTOP-J2U6QDF;"
-                                 "Database=master;"
-                                 "Trusted_Connection=yes;")
-        except:
-            return None, "Error with DB connection"
+            con = pyodbc.connect("DRIVER={FreeTDS};"
+                                 "SERVER=mssql_container;"
+                                 "PORT=1433;"
+                                 "DATABASE=master;"
+                                 "UID=sa;"
+                                 "PWD=Secret1234")
+        except Exception as e:
+            return None, "Error with DB connection {}".format(e)
     elif database == "Oracle":
         try:
             con = cx_Oracle.connect(
@@ -60,6 +65,6 @@ def check_query(reference_code, user_code, database):
             return "OK", None
         else:
             return find_error(reference_output, user_output), None
-    except Exception:
+    except Exception as e:
         con.close()
-        return None, "Exception"
+        return None, e

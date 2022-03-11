@@ -1,0 +1,48 @@
+version: "3.3"
+
+services:
+
+  postgres:
+    container_name: "postgres_container"
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: "BoBSDB"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    networks:
+      bridge:
+        ipv4_address: 10.1.0.100
+
+  mssql:
+    container_name: "mssql_container"
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Secret1234
+    ports:
+      - "1433:1433"
+    networks:
+      bridge:
+        ipv4_address: 10.1.0.101
+
+  app:
+    container_name: "app_container"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      bridge:
+        ipv4_address: 10.1.0.102
+
+networks:
+  bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24
