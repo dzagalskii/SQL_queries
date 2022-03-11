@@ -39,11 +39,11 @@ def index(request):
         postgres_init_script = postgres_init_file.read()
         mssql_init_script = mssql_init_file.read()
 
-        print(postgres_init_script)
-        print(mssql_init_script)
-
         postgres_cur.execute(postgres_init_script)
         mssql_cur.execute(mssql_init_script)
+
+        postgres_con.commit()
+        mssql_con.commit()
 
         postgres_con.close()
         mssql_con.close()
