@@ -28,7 +28,7 @@ services:
       bridge:
         ipv4_address: 10.1.0.101
 
-  app:
+  zpp:
     container_name: "app_container"
     build:
       context: ./
