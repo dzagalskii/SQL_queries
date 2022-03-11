@@ -28,7 +28,7 @@ services:
       bridge:
         ipv4_address: 10.1.0.101
 
-  zpp:
+  app:
     container_name: "app_container"
     build:
       context: ./
@@ -38,6 +38,12 @@ services:
     networks:
       bridge:
         ipv4_address: 10.1.0.102
+    depends_on:
+      - postgres
+      - mssql
+    links:
+        - postgres
+        - mssql
 
 networks:
   bridge:
