@@ -128,7 +128,7 @@ LOGOUT_REDIRECT_URL = '/account/login'
 AUTH_USER_MODEL = 'user.CustomUser'
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'faoebcok@gmail.com'
+EMAIL_HOST_USER = 'sql.queries.ibks@gmail.com'
 EMAIL_HOST_PASSWORD = '0512s0512'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
