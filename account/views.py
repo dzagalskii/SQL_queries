@@ -72,7 +72,7 @@ def signup(request):
                               html_message=html_message)
                     return render(request, 'registration/register_done.html')
                 else:
-                    my_errors.append('Адрес электронной почты должен быть с доменом @edu.spbstu.ru.')
+                    my_errors.append('Адрес электронной почты должен быть с доменом @edu.spbstu.ru')
         else:
             form = SignupForm()
         for error_field in form.errors:

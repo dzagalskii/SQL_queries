@@ -1,5 +1,4 @@
 import psycopg2
-#import cx_Oracle
 import pyodbc
 from .SqlRequestCheck import *
 
@@ -27,7 +26,7 @@ def check_query(reference_code, user_code, database):
                 port="5432"
             )
         except Exception as e:
-            return None, "Error with DB connection {}".format(e)
+            return None, "Ошибка подключения к базе данных PG: {}".format(e)
     elif database == "MS":
         try:
             con = pyodbc.connect("DRIVER={FreeTDS};"
@@ -37,19 +36,9 @@ def check_query(reference_code, user_code, database):
                                  "UID=sa;"
                                  "PWD=Secret1234")
         except Exception as e:
-            return None, "Error with DB connection {}".format(e)
-    elif database == "Oracle":
-        try:
-            con = cx_Oracle.connect(
-                'username',
-                'config.password',
-                'config.dsn',
-                encoding='UTF-8')
-
-        except:
-            return None, "Error with DB connection"
+            return None, "Ошибка подключения к базе данных MS: {}".format(e)
     else:
-        return None, "Unknown database"
+        return None, "Неизвестная база данных..."
 
     cur = con.cursor()
     try:
@@ -67,4 +56,5 @@ def check_query(reference_code, user_code, database):
             return find_error(reference_output, user_output), None
     except Exception as e:
         con.close()
-        return None, e
+        print('Возникла при выполнении запроса, проверьте синтаксис: {}'.format(e))
+        return None, 'Возникла при выполнении запроса, проверьте синтаксис'
