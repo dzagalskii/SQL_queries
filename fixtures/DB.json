@@ -644,15 +644,6 @@
         "query_scheme": 1
     }
 },
-    {
-    "model": "dbserver.query",
-    "pk": 4,
-    "fields": {
-        "query_request": "СОСИТЕ хУЙ",
-        "query_answer": "SELECT distinct  Ast1.Cost_pm FROM ASt Ast1         WHERE NOT EXISTS (SELECT Ast2.Code FROM ASt Ast2 WHERE Ast2.UpSys = Ast1.Code);",
-        "query_scheme": 1
-    }
-},
 {
     "model": "user.customuser",
     "pk": 1,
