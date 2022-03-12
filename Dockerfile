@@ -1,8 +1,8 @@
 FROM ubuntu
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SUPERUSER_USERNAME=testuser
-ENV DJANGO_SUPERUSER_PASSWORD=testpass
+ENV DJANGO_SUPERUSER_USERNAME=admin_user
+ENV DJANGO_SUPERUSER_PASSWORD=admin_password_ibks
 WORKDIR /code
 RUN apt-get update
 RUN apt-get upgrade -y
@@ -20,6 +20,6 @@ RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate --run-syncdb
 RUN python3 manage.py loaddata fixtures/DB.json
 #RUN echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@myproject.com', 'password')" | python3 manage.py shell
-RUN python3 manage.py createsuperuser --email ochko@maol.com --noinput
+RUN python3 manage.py createsuperuser --email admin_user@ibks.com --noinput
 EXPOSE 8000
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000" ]
+CMD ["python3", "manage.py", "runserver", "10.0.176.42:8000" ]
