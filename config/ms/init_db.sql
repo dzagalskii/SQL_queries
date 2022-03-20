@@ -299,8 +299,8 @@ create table Works
     Cost int,
     Status varchar(15),
     PRIMARY KEY (W, F),
-    CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
-    CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
+    FOREIGN KEY (F) REFERENCES Fr (Code),
+    FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
 -- create table Works
