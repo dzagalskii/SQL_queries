@@ -274,3 +274,11 @@ INSERT INTO SPJ2 (SN, PN, JN, QTY)
 VALUES ('777', '2', '55', 1000);
 INSERT INTO SPJ2 (SN, PN, JN, QTY)
 VALUES ('777', '3', '22', 3500);
+
+create table Wr
+(
+    Code   int primary key,
+    Fio    varchar(50) not null unique,
+    City   varchar(15),
+    Salary int
+);
