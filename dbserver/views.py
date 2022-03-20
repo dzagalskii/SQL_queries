@@ -41,7 +41,7 @@ def index(request):
     except Exception as e:
         postgres_con.close()
         print("Error with DB(PG) initialization: {}".format(e))
-        return HttpResponse("Error with DB initialization: {}".format(e))
+        return HttpResponse("Error with DB(PG) initialization: {}".format(e))
 
     try:
         mssql_init_file = open('config/ms/init_db.sql')
@@ -52,6 +52,6 @@ def index(request):
     except Exception as e:
         mssql_con.close()
         print("Error with DB(MS) initialization: {}".format(e))
-        return HttpResponse("Error with DB initialization: {}".format(e))
+        return HttpResponse("Error with DB(MS) initialization: {}".format(e))
 
     return HttpResponse("Hello, world. You're at the polls index.")
