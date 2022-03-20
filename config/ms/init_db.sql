@@ -314,46 +314,4 @@ create table Works1 -- отношение описывающее сотрудн�
     CONSTRAINT FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
-go
-
-insert into Wr
-values (1, 'A', 'Msc', 20000),
-       (2, 'B', 'Spb', Null),
-       (3, 'C', Null, 10000),
-       (4, 'D', 'Msc', 50000),
-       (5, 'E', 'Msc', 10000),
-       (6, 'F', 'Spb', 20000),
-       (7, 'G', 'Tver', 10000);
-
-insert into Fr
-values (111, 'FA', 'B', 'Msc', 500000),
-       (222, 'FB', 'K', 'Spb', 300000),
-       (333, 'FC', 'A', 'Msc', Null),
-       (444, 'FD', 'G', 'Msc', 400000),
-       (555, 'FE', 'E', Null, 600000),
-       (666, 'FG', Null, 'Ekb', 100000);
-
-insert into Works
-values (1, 111, 10000, 'End'),
-       (1, 333, 10000, 'In progress'),
-       (1, 222, null, 'In progress'),
-       (2, 111, 10000, null), --!!!
-       (3, 111, null, 'End'),
-       (3, 333, 10000, 'Plan'),
-       (4, 111, 10000, null),
-       (4, 333, 10000, null),
-       (6, 555, null, 'Before'),
-       (4, 555, 20000, 'End'),
-       (2, 555, 10000, 'In progress');
-
-insert into Works1
-values (1, 111, 10000, 'End'),
-       (1, 333, 10000, 'In progress'),
-       (1, 222, null, 'In progress'),
-       (2, 111, 10000, null),
-       (3, 111, null, 'End'),
-       (3, 333, 10000, 'Plan'),
-       (4, 111, 10000, null),
-       (4, 333, 10000, null);
-
 
