@@ -294,8 +294,8 @@ create table Fr
 
 create table Works
 (
-    W      int,
-    F      int,
+    W      int not null,
+    F      int not null,
     Cost   int,
     Status varchar(15),
     PRIMARY KEY (W, F),
@@ -305,8 +305,8 @@ create table Works
 
 create table Works1
 (
-    W      int,
-    F      int,
+    W      int not null,
+    F      int not null,
     Cost   int,
     Status varchar(15),
     PRIMARY KEY (W, F),
