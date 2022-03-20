@@ -299,8 +299,8 @@ create table Works
     Cost   int,
     Status varchar(15),
     PRIMARY KEY (W, F),
-    CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
-    CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
+    FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
+    FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
 create table Works1
@@ -310,6 +310,17 @@ create table Works1
     Cost   int,
     Status varchar(15),
     PRIMARY KEY (W, F),
-    CONSTRAINT FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
-    CONSTRAINT FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
+    FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
+    FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
 );
+
+
+
+-- create table Emp_Sys
+-- (
+--     Emp Varchar(15) not null,
+--     ASt int         not null,
+--     PRIMARY KEY (Emp, ASt),
+--     CONSTRAINT FK_ES FOREIGN KEY (Emp) REFERENCES Emp (Family),
+--     CONSTRAINT FK_SE FOREIGN KEY (ASt) REFERENCES ASt (Code)
+-- );
