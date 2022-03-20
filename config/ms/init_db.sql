@@ -282,3 +282,13 @@ create table Wr
     City   varchar(15),
     Salary int
 );
+
+create table Fr
+(
+    Code   int primary key,
+    Name   varchar(50) not null unique,
+    Fio    varchar(50),
+    City   varchar(15),
+    Bugjet int
+);
+
