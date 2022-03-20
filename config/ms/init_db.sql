@@ -294,44 +294,22 @@ create table Fr
 
 create table Works
 (
-    W int,
-    F int,
-    Cost int,
+    W      int not null,
+    F      int not null,
+    Cost   int,
     Status varchar(15),
     PRIMARY KEY (W, F),
     FOREIGN KEY (F) REFERENCES Fr (Code),
     FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
--- create table Works
--- (
---     W      int not null,
---     F      int not null,
---     Cost   int,
---     Status varchar(15)
---     PRIMARY KEY (W, F)
---     CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
--- --     CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
--- );
---
--- create table Works1
--- (
---     W      int not null,
---     F      int not null,
---     Cost   int,
---     Status varchar(15),
---     PRIMARY KEY (W, F),
--- --     FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
--- --     FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
--- );
-
-
-
--- create table Emp_Sys
--- (
---     Emp Varchar(15) not null,
---     ASt int         not null,
---     PRIMARY KEY (Emp, ASt),
---     CONSTRAINT FK_ES FOREIGN KEY (Emp) REFERENCES Emp (Family),
---     CONSTRAINT FK_SE FOREIGN KEY (ASt) REFERENCES ASt (Code)
--- );
+create table Works1
+(
+    W      int not null,
+    F      int not null,
+    Cost   int,
+    Status varchar(15),
+    PRIMARY KEY (W, F),
+    FOREIGN KEY (F) REFERENCES Fr (Code),
+    FOREIGN KEY (W) REFERENCES Wr (Code)
+);
