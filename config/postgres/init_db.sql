@@ -315,5 +315,4 @@ insert into Works1 values
 (3, 111, null, 'End'),
 (3, 333, 10000, 'Plan'),
 (4, 111, 10000, null),
-(4, 333, 10000, null)
-;
+(4, 333, 10000, null);

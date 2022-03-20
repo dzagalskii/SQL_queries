@@ -34,23 +34,24 @@ def index(request):
 
     try:
         postgres_init_file = open('config/postgres/init_db.sql')
-        mssql_init_file = open('config/ms/init_db.sql')
-
         postgres_init_script = postgres_init_file.read()
-        mssql_init_script = mssql_init_file.read()
-
         postgres_cur.execute(postgres_init_script)
-        mssql_cur.execute(mssql_init_script)
-
         postgres_con.commit()
-        mssql_con.commit()
-
         postgres_con.close()
-        mssql_con.close()
-
     except Exception as e:
         postgres_con.close()
-        mssql_con.close()
-        print("Error with DB initialization: {}".format(e))
+        print("Error with DB(PG) initialization: {}".format(e))
         return HttpResponse("Error with DB initialization: {}".format(e))
+
+    try:
+        mssql_init_file = open('config/ms/init_db.sql')
+        mssql_init_script = mssql_init_file.read()
+        mssql_cur.execute(mssql_init_script)
+        mssql_con.commit()
+        mssql_con.close()
+    except Exception as e:
+        mssql_con.close()
+        print("Error with DB(MS) initialization: {}".format(e))
+        return HttpResponse("Error with DB initialization: {}".format(e))
+
     return HttpResponse("Hello, world. You're at the polls index.")
