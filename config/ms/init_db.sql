@@ -92,14 +92,6 @@ values ('Ivanov', 1),
        ('Kuznetsov', 2),
        ('Semenov', 1);
 
-
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-
-if
-not exists (   select * from sys.tables where name='S'  )
 create table S
 (
     SN    int,
@@ -109,8 +101,6 @@ create table S
     PRIMARY KEY (SN)
 );
 
-if
-not exists (   select * from sys.tables where name='P'  )
 create table P
 (
     PN     int,
@@ -131,8 +121,6 @@ create table J
     PRIMARY KEY (JN)
 );
 
-if
-not exists (   select * from sys.tables where name='SPJ'  )
 create table SPJ
 (
     SN  int,
@@ -145,8 +133,6 @@ create table SPJ
     FOREIGN KEY (JN) references J (JN)
 );
 
-if
-not exists (   select * from sys.tables where name='SPJ2'  )
 create table SPJ2
 (
     SN  int,
@@ -290,11 +276,6 @@ INSERT INTO SPJ2 (SN, PN, JN, QTY)
 VALUES ('777', '2', '55', 1000);
 INSERT INTO SPJ2 (SN, PN, JN, QTY)
 VALUES ('777', '3', '22', 3500);
-
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
 
 create table Wr
 (
