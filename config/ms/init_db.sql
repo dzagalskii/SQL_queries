@@ -292,12 +292,19 @@ create table Fr
     Bugjet int
 );
 
-create table Works -- отношение описывающее сотрудников компании
-(  W int,
-   F int ,
-   Cost int,
-   Status varchar(15)
-   PRIMARY KEY (W,F)
-   CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
-   CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
- );
+create table asdsd
+(
+    Code   int primary key,
+    Fio    varchar(50) not null unique,
+    City   varchar(15),
+    Salary int
+);
+
+create table Fqweqwer
+(
+    Code   int primary key,
+    Name   varchar(50) not null unique,
+    Fio    varchar(50),
+    City   varchar(15),
+    Bugjet int
+);
