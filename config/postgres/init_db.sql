@@ -97,3 +97,234 @@ values ('Ivanov', 1),
        ('Kuznetsov', 1),
        ('Kuznetsov', 2),
        ('Semenov', 1);
+
+/**//**//**//**/
+/**//**//**//**/
+/**//**//**//**/
+/**//**//**//**/
+
+drop table IF EXISTS SPJ;
+drop table IF EXISTS SPJ2;
+drop table IF EXISTS S;
+drop table IF EXISTS P;
+drop table IF EXISTS J;
+
+
+create table S
+(
+	SN int,
+	STAT varchar(255) NOT NULL,
+	SNAME varchar(255) NOT NULL,
+	CITY varchar(255) ,
+	PRIMARY KEY(SN)
+);
+
+
+
+create table P
+(
+	PN int,
+	PNAME varchar(255) NOT NULL,
+	COLOR varchar(255) ,
+	WEIGHT float NOT NULL,
+	CITY varchar(255),
+	PRIMARY KEY(PN)
+);
+
+
+
+create table J
+(
+	JN int,
+	JNAME varchar(255) NOT NULL,
+	CITY varchar(255) ,
+	PRIMARY KEY(JN)
+);
+
+
+
+create table SPJ
+(
+	SN int,
+	PN int,
+	JN int,
+	QTY int NOT NULL,
+	PRIMARY KEY(SN, PN, JN),
+	FOREIGN KEY (SN) references S(SN),
+	FOREIGN KEY (PN) references P(PN),
+	FOREIGN KEY (JN) references J(JN)
+);
+
+
+
+create table SPJ2
+(
+	SN int,
+	PN int,
+	JN int,
+	QTY int NOT NULL,
+	PRIMARY KEY(SN, PN, JN),
+	FOREIGN KEY (SN) references S(SN),
+	FOREIGN KEY (PN) references P(PN),
+	FOREIGN KEY (JN) references J(JN)
+);
+
+
+
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('1', 'headlight', 'red', '2000', 'London');
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('2', 'Cowling', 'gray', '15000', 'Moscow');
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('3', 'alarm', 'black', '3000', 'Harbin');
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('4', 'phone', 'red', '3000', 'Harbin');
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('5', 'panel', 'red', '3000', 'London');
+INSERT INTO P (PN, PNAME, COLOR, WEIGHT, CITY) VALUES ('6', 'alarm', 'gray', '3000', 'Saint-Petersburg');
+
+
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('111', 'post_1', 'Manufacturer of products',  'Saint-Petersburg');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('222', 'post_2', 'Official dealer',  'Harbin');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('333', 'post_3', 'Innovative product', 'Voronezh');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('444', 'post_4', 'Official dealer',  'Moscow');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('555', 'post_5', 'Innovative product', 'Saint-Petersburg');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('666', 'post_6', 'Dealer', 'London');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('000', 'post_0', 'StartUP', 'London');
+INSERT INTO S (SN, SNAME, STAT, CITY) VALUES ('777', 'post_7', 'Manufacturer of products', 'London');
+
+
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('11', 'zakaz_1',   'Berlin');
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('22', 'zakaz_2',   'Saint-Petersburg');
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('33', 'zakaz_3',  'London');
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('44', 'zakaz_4',  'Harbin');
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('55', 'zakaz_5',  'London');
+INSERT INTO J (JN, JNAME,  CITY) VALUES ('66', 'zakaz_6',  'London');
+
+
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('111', '2', '66',  400);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('111', '3', '22',  5000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('111', '3', '66',  250);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('222', '2', '11',  3500);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('222', '3', '11',  700);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('222', '3', '22',  200);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('222', '4', '44',  500);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('222', '6', '33',  500);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('333', '1', '33',  1000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('333', '4', '55',  250);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('444', '1', '11',  400);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('444', '2', '22',  15000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('444', '3', '22',  15000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('555', '3', '22',  350);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('555', '2', '33',  1000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('666', '6', '33',  400);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('666', '4', '44',  300);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '1', '44',  500);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '1', '55',  250);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '2', '33',  750);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '2', '44',  600);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '2', '55',  1000);
+INSERT INTO SPJ (SN, PN, JN, QTY) VALUES ('777', '3', '22',  3500);
+
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('111', '1', '66',  400);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('111', '2', '22',  400);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('111', '3', '22',  5000);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('111', '3', '66',  250);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('222', '2', '44',  3500);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('222', '3', '22',  200);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('222', '4', '44',  500);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('222', '6', '33',  500);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('333', '1', '33',  1000);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('333', '4', '55',  250);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('444', '3', '22',  15000);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('555', '3', '22',  350);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('666', '6', '33',  400);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('666', '4', '44',  300);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '1', '44',  500);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '1', '55',  250);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '2', '33',  750);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '2', '55',  1000);
+INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '3', '22',  3500);
+
+
+/**//**//**//**/
+/**//**//**//**/
+/**//**//**//**/
+/**//**//**//**/
+
+drop table IF EXISTS Works;
+drop table IF EXISTS  Works1;
+drop table IF EXISTS Wr;
+drop table IF EXISTS Fr;
+
+create table Wr
+(  Code int primary key,
+   Fio varchar(50) not null unique,
+   City varchar(15),
+   Salary int
+ );
+
+ create table Fr
+(  Code int primary key,
+   Name varchar(50) not null unique,
+   Fio varchar(50) ,
+   City varchar(15),
+   Bugjet int
+ );
+
+  create table Works -- отношение описывающее сотрудников компании
+(  W int,
+   F int ,
+   Cost int,
+   Status varchar(15),
+   PRIMARY KEY (W,F),
+   CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
+   CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
+ );
+
+  create table Works1 -- отношение описывающее сотрудников компании
+(  W int,
+   F int ,
+   Cost int,
+   Status varchar(15),
+   PRIMARY KEY (W,F),
+   CONSTRAINT FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
+   CONSTRAINT FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
+ );
+
+
+insert into Wr values
+(1, 'A', 'Msc', 20000),
+(2, 'B', 'Spb', Null),
+(3, 'C', Null, 10000),
+(4, 'D', 'Msc', 50000),
+(5, 'E', 'Msc', 10000),
+(6, 'F', 'Spb', 20000),
+(7, 'G', 'Tver', 10000);
+
+insert into Fr values
+(111, 'FA', 'B', 'Msc', 500000),
+(222, 'FB', 'K', 'Spb', 300000),
+(333, 'FC', 'A', 'Msc', Null),
+(444, 'FD', 'G', 'Msc', 400000),
+(555, 'FE', 'E', Null, 600000),
+(666, 'FG', Null, 'Ekb', 100000);
+
+insert into Works values
+(1, 111, 10000, 'End'),
+(1, 333, 10000, 'In progress'),
+(1, 222, null, 'In progress'),
+(2, 111, 10000, null), --!!!
+(3, 111, null, 'End'),
+(3, 333, 10000, 'Plan'),
+(4, 111, 10000, null),
+(4, 333, 10000, null),
+(6, 555, null, 'Before'),
+(4, 555, 20000, 'End'),
+(2, 555, 10000, 'In progress');
+
+insert into Works1 values
+(1, 111, 10000, 'End'),
+(1, 333, 10000, 'In progress'),
+(1, 222, null, 'In progress'),
+(2, 111, 10000, null),
+(3, 111, null, 'End'),
+(3, 333, 10000, 'Plan'),
+(4, 111, 10000, null),
+(4, 333, 10000, null)
+;
