@@ -107,12 +107,10 @@ create table P
     PNAME  varchar(255) NOT NULL,
     COLOR  varchar(255),
     WEIGHT float        NOT NULL,
-    CITY   varchar(255)
-        PRIMARY KEY(PN)
+    CITY   varchar(255),
+    PRIMARY KEY (PN)
 );
 
-if
-not exists (   select * from sys.tables where name='J'  )
 create table J
 (
     JN    int,
@@ -299,9 +297,9 @@ create table Works -- отношение описывающее сотрудни
     W      int,
     F      int,
     Cost   int,
-    Status varchar(15)
-        PRIMARY KEY (W,F)
-        CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
+    Status varchar(15),
+    PRIMARY KEY (W, F),
+    CONSTRAINT FK_ES FOREIGN KEY (F) REFERENCES Fr (Code),
     CONSTRAINT FK_SE FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
@@ -310,9 +308,9 @@ create table Works1 -- отношение описывающее сотрудн�
     W      int,
     F      int,
     Cost   int,
-    Status varchar(15)
-        PRIMARY KEY (W,F)
-        CONSTRAINT FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
+    Status varchar(15),
+    PRIMARY KEY (W, F),
+    CONSTRAINT FK_ES1 FOREIGN KEY (F) REFERENCES Fr (Code),
     CONSTRAINT FK_SE1 FOREIGN KEY (W) REFERENCES Wr (Code)
 );
 
