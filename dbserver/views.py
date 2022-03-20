@@ -15,7 +15,7 @@ def index(request):
             host="10.1.0.100",
             port="5432")
     except Exception as e:
-        print("Error with DB connection: {}".format(e))
+        print("Error with DB(PG) connection: {}".format(e))
         return HttpResponse("Error with DB connection: {}".format(e))
 
     try:
@@ -26,7 +26,7 @@ def index(request):
                                    "UID=sa;"
                                    "PWD=Secret1234")
     except Exception as e:
-        print("Error with DB connection: {}".format(e))
+        print("Error with DB(MS) connection: {}".format(e))
         return HttpResponse("Error with DB connection: {}".format(e))
 
     postgres_cur = postgres_con.cursor()

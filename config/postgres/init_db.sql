@@ -98,11 +98,6 @@ values ('Ivanov', 1),
        ('Kuznetsov', 2),
        ('Semenov', 1);
 
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-
 drop table IF EXISTS SPJ;
 drop table IF EXISTS SPJ2;
 drop table IF EXISTS S;
@@ -240,12 +235,6 @@ INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '1', '55',  250);
 INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '2', '33',  750);
 INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '2', '55',  1000);
 INSERT INTO SPJ2 (SN, PN, JN, QTY) VALUES ('777', '3', '22',  3500);
-
-
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
-/**//**//**//**/
 
 drop table IF EXISTS Works;
 drop table IF EXISTS  Works1;
